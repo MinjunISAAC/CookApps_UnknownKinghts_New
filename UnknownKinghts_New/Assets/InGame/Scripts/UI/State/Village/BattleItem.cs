@@ -44,7 +44,6 @@ namespace InGame.ForState.ForUI
             _originFrameSize       = _RECT_Frame      .rect.size;
             _originBottomFrameSize = _RECT_BottomFrame.sizeDelta;
             _originIcon            = _RECT_Icon       .rect.size;
-            Debug.Log($"A {_originFrameSize} / B {_originBottomFrameSize} / C {_originIcon}");
         }
 
         private void OnDestroy()
