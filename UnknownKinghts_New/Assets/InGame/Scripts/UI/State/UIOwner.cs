@@ -18,7 +18,8 @@ namespace InGame.ForUI
         // Components
         // --------------------------------------------------
         [Header("1. State View Group")]
-        [SerializeField] private VillageView _villageView = null;
+        [SerializeField] private VillageView       _villageView       = null;
+        [SerializeField] private ChapterSelectView _chapterSelectView = null;
 
         [Header("2. Option View Group")]
         [SerializeField] private OptionView  _optionView  = null;
@@ -44,10 +45,12 @@ namespace InGame.ForUI
         public StateView GetStateUI()
         {
             var currentState = Game_StateMachine.Instance.CurrentState;
+
             switch (currentState)
             {
-                case EGameState.Village: return _villageView;
-                //case EStateType.ChapterSelect: return _chapterSelectView;
+                case EGameState.Village      : return _villageView;
+                case EGameState.ChapterSelect: return _chapterSelectView;
+
                 //case EStateType.BuildDeck: return _buildDeckView;
                 //case EStateType.Battle: return _battleView;
                 //case EStateType.Result: return _resultView;

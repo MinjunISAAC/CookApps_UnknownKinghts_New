@@ -57,9 +57,9 @@ public class Game_StateMachine : SimpleStateMachine<EGameState>
         (
             new Dictionary<EGameState, SimpleState<EGameState>>()
             {
-                { EGameState.Village,     new State_Village()     },
+                { EGameState.Village      , new State_Village()       },
+                { EGameState.ChapterSelect, new State_ChapterSelect() },
                 /*
-                    { EStateType.ChapterSelect, new State_ChapterSelect() },
                     { EStateType.BuildDeck,   new State_BuildDeck()   },
                     { EStateType.Battle,      new State_Battle()      },
                     { EStateType.Result,      new State_Result()      },

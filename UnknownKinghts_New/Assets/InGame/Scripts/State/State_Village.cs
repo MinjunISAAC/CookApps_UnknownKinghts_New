@@ -1,13 +1,11 @@
+// ----- Unity
+using UnityEngine;
+
+// ----- User Defined
 using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
-using InGame.ForState;
-using InGame.ForState.ForUI;
-using InGame.ForUI.ForOption;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Util.ForStateMachine;
+using InGame.ForState.ForUI;
 
 namespace InGame.ForState
 {
@@ -17,7 +15,7 @@ namespace InGame.ForState
         // Variables
         // --------------------------------------------------
         // ----- Owner
-        private Owner _owner = null;
+        private Owner       _owner       = null;
 
         // ----- UI
         private VillageView _villageView = null;
@@ -52,6 +50,7 @@ namespace InGame.ForState
             #endregion
 
             // 1. State UI 초기화
+            _villageView.gameObject.SetActive(true);
             _SetToProfileView();
             _SetToBottomView ();
             
@@ -65,6 +64,13 @@ namespace InGame.ForState
             _owner.SetToOptionView(State, userCoin, userGem, userBread, maxBread);
         }
 
+        protected override void _Finish(EGameState nextStateKey)
+        {
+            _villageView.gameObject.SetActive(false) ;
+            Debug.Log($"<color=yellow>[State_{State}._Start] {State} State에 이탈하였습니다.</color>");
+        }
+
+        // ----- Only State 
         private void _SetToProfileView()
         {
             var userId       = UserSaveDataManager.GetToUserName ();

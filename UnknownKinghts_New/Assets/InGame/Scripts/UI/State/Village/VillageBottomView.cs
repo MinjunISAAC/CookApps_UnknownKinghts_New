@@ -55,7 +55,6 @@ namespace InGame.ForState.ForUI
             if (_battleItemSet.TryGetValue(type, out var targetItem))
             {
                 targetItem.Focus(true);
-                Debug.Log($"여기 들어오긴함?");
             }
         }
     }
