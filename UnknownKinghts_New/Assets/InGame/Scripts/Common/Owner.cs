@@ -2,6 +2,7 @@ using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
 using InGame.ForState;
 using InGame.ForUI;
+using InGame.ForUI.ForOption;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,8 @@ namespace InGame
         // --------------------------------------------------
         // Components
         // --------------------------------------------------
-        [Header(". UI Owner")]
-        [SerializeField] private UIOwner _uiOwner = null;
+        [Header("1. UI Group")]
+        [SerializeField] private UIOwner    _uiOwner = null;
 
         // --------------------------------------------------
         // Variables
@@ -56,6 +57,10 @@ namespace InGame
         // --------------------------------------------------
         // Functions - Nomal
         // --------------------------------------------------
-        public StateView GetToStateUI() => _uiOwner.GetStateUI();
+        public StateView GetToStateUI() 
+        => _uiOwner.GetStateUI();
+        
+        public void SetToOptionView(EGameState gameState, int coinValue, int gemValue, int breadValue, int maxBreadValue)
+        => _uiOwner.SetToOptionUI(gameState, coinValue, gemValue, breadValue, maxBreadValue);
     }
 }

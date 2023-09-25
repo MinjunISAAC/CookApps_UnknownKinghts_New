@@ -59,5 +59,19 @@ namespace Core.ForData.ForUserLevel
                 return -1;
             }
         }
+
+        public static int GetToMaxBread(int userLevel)
+        {
+            if (_dataSet.TryGetValue(userLevel, out var targetLevelInfo))
+            {
+                var maxBread = targetLevelInfo.Bread;
+                return maxBread;
+            }
+            else
+            {
+                Debug.LogError($"<color=red>[UserLevelDataHelper.GetToMaxBread] 현재 레벨(Lv.{userLevel})에 대한 정보가 존재하지 않습니다.</color>");
+                return -1;
+            }
+        }
     }
 }

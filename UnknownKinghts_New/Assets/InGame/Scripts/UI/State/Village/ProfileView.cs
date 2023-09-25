@@ -49,10 +49,12 @@ namespace InGame.ForState.ForUI
             _RECT_UserExpBar.sizeDelta = _expRectSize;
         }
 
-        public void SetToUserInfo(string userId, int userLevel)
+        public void RefreshToUserInfo(int userLevel, int userExp, int levelUpExp)
         {
-            _TMP_UserId.text    = userId;
-            _TMP_UserLevel.text = $"Lv.{userLevel}";
+            _TMP_UserLevel.text        = $"Lv.{userLevel}";
+            _TMP_UserExp.text          = $"{userExp}/{levelUpExp}({userExp / levelUpExp * PARCENT_VALUE}%)";
+            _expRectSize.x             = (userExp * _expRectSize.x) / (float)levelUpExp;
+            _RECT_UserExpBar.sizeDelta = _expRectSize;
         }
 
         public void SetToExp()

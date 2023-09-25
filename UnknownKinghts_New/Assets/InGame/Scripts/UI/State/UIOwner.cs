@@ -8,6 +8,7 @@ using UnityEngine;
 // ----- User Defined
 using InGame.ForState.ForUI;
 using InGame.ForState;
+using InGame.ForUI.ForOption;
 
 namespace InGame.ForUI
 {
@@ -18,6 +19,11 @@ namespace InGame.ForUI
         // --------------------------------------------------
         [Header("1. State View Group")]
         [SerializeField] private VillageView _villageView = null;
+
+        [Header("2. Option View Group")]
+        [SerializeField] private OptionView  _optionView  = null;
+
+
 
         //[SerializeField] private ChapterSelectView _chapterSelectView = null;
         //[SerializeField] private BuildDeckView _buildDeckView = null;
@@ -49,5 +55,7 @@ namespace InGame.ForUI
             }
         }
 
+        public void SetToOptionUI(EGameState gameState, int coinValue, int gemValue, int breadValue, int maxBreadValue)
+        => _optionView.Visiable(gameState, coinValue, gemValue, breadValue, maxBreadValue);
     }
 }
