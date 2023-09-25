@@ -16,7 +16,7 @@ namespace Util.ForJson
         // Variables
         // --------------------------------------------------
         // ----- Const
-        private const string JSONFILE_NAME = "UserLevelSheet.Json";
+        private const string JSONFILE_NAME = "UserLevelSheet";
 
         // ----- Private
         private static UserLevelData _userLevelDataSet = null;
@@ -26,22 +26,20 @@ namespace Util.ForJson
         // --------------------------------------------------
         public static void LoadJson()
         {
-            var filePath_UserLevelData = Path.Combine(Application.persistentDataPath, JSONFILE_NAME);
+            //var filePath_UserLevelData = Path.Combine(Application.persistentDataPath, JSONFILE_NAME);
+            var loadedJsonFile = Resources.Load<TextAsset>($"{JSONFILE_NAME}");
 
-            if (File.Exists(filePath_UserLevelData))
-            {
-                string jsonFileData = File.ReadAllText(filePath_UserLevelData);
-
-                _userLevelDataSet = JsonUtility.FromJson<UserLevelData>(jsonFileData);
-
-                if (_userLevelDataSet == null)
-                {
-                    Debug.LogError("<color=red>[JsonParser.LoadJson] Json 파일(UserLevel) 파싱에 실패하였습니다.</color>");
-                }
-            }
-            else
+            if (loadedJsonFile == null)
             {
                 Debug.LogError("<color=red>[JsonParser.LoadJson] Json 파일(UserLevel)이 존재하지 않습니다.</color>");
+                return;
+            }
+
+            _userLevelDataSet = JsonUtility.FromJson<UserLevelData>(loadedJsonFile.text);
+
+            if (_userLevelDataSet == null)
+            {
+                Debug.LogError("<color=red>[JsonParser.LoadJson] Json 파일(UserLevel) 파싱에 실패하였습니다.</color>");
             }
         }
 

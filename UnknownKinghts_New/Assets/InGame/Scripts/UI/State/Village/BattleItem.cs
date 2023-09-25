@@ -39,13 +39,6 @@ namespace InGame.ForState.ForUI
         // --------------------------------------------------
         // Functions - Event
         // --------------------------------------------------
-        private void Start()
-        {
-            _originFrameSize       = _RECT_Frame      .rect.size;
-            _originBottomFrameSize = _RECT_BottomFrame.sizeDelta;
-            _originIcon            = _RECT_Icon       .rect.size;
-        }
-
         private void OnDestroy()
         {
             _BTN_BattleEnter.onClick.RemoveAllListeners();
@@ -59,6 +52,10 @@ namespace InGame.ForState.ForUI
         {
             if (_battleEnterOnClick == null)
             {
+                _originFrameSize       = _RECT_Frame.sizeDelta;
+                _originBottomFrameSize = _RECT_BottomFrame.sizeDelta;
+                _originIcon            = _RECT_Icon.rect.size;
+
                 _battleEnterOnClick = battleEnterOnClick;
                 _BTN_BattleEnter.onClick.AddListener(() => { _battleEnterOnClick(_battleType); });
             }
@@ -78,7 +75,7 @@ namespace InGame.ForState.ForUI
                 
                 _RECT_Frame      .sizeDelta = frameSize;
                 _RECT_BottomFrame.sizeDelta = bottomFrame;
-                _RECT_Icon.sizeDelta        = _originIcon * 1.25f;
+                _RECT_Icon       .sizeDelta = _originIcon * 1.25f;
             }
             else
             {
