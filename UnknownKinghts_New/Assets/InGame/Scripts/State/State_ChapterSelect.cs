@@ -1,5 +1,6 @@
 using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
+using InGame.ForLevel.ForChapter;
 using InGame.ForState.ForUI;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,8 +49,11 @@ namespace InGame.ForState
             }
             #endregion
 
+            var chapterStep       = UserSaveDataManager.GetToLastChapter();
+            var targetChapterData = _owner.GetToChapterData(chapterStep);
+
             // 1. State UI 초기화
-            _SetToChapterSelectView();
+            _SetToChapterSelectView(targetChapterData);
 
             // 2. Option View 초기화
             _SetToOptionView();
@@ -62,9 +66,15 @@ namespace InGame.ForState
         }
 
         // ----- Only State 
-        private void _SetToChapterSelectView()
+        private void _SetToChapterSelectView(Chapter chapterData)
         {
             _chapterSelectView.gameObject.SetActive(true);
+            _chapterSelectView.SetToOnClickReturn
+            (
+                () => { Game_StateMachine.Instance.ChangeState(EGameState.Village); }
+            );
+
+            _chapterSelectView.SetToStageInfoView(chapterData, null);
         }
 
         private void _SetToOptionView()

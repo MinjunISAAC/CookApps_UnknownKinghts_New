@@ -1,5 +1,7 @@
 using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
+using InGame.ForChapterGroup;
+using InGame.ForLevel.ForChapter;
 using InGame.ForState;
 using InGame.ForUI;
 using InGame.ForUI.ForOption;
@@ -15,8 +17,11 @@ namespace InGame
         // --------------------------------------------------
         // Components
         // --------------------------------------------------
-        [Header("1. UI Group")]
-        [SerializeField] private UIOwner    _uiOwner = null;
+        [Header("1. Chapter Data")]
+        [SerializeField] private ChapterGroup _chapterGroup = null;
+
+        [Header("2. UI Group")]
+        [SerializeField] private UIOwner      _uiOwner      = null;
 
         // --------------------------------------------------
         // Variables
@@ -41,9 +46,12 @@ namespace InGame
             // [Manage Group Init]
             // 1. Json File Load
             // 2. User Save Data Load
+            // 3. Chapter Data Load
             JsonParser         .LoadJson();
             UserSaveDataManager.Load();
+            UserSaveDataManager.OnInit();
             UserLevelDataHelper.OnInit();
+            _chapterGroup      .OnInit();
 
             Game_StateMachine.Instance.ChangeState(EGameState.Village);
             yield return null;
@@ -62,5 +70,8 @@ namespace InGame
         
         public void SetToOptionView(EGameState gameState, int coinValue, int gemValue, int breadValue, int maxBreadValue)
         => _uiOwner.SetToOptionUI(gameState, coinValue, gemValue, breadValue, maxBreadValue);
+
+        public Chapter GetToChapterData(int chapterStep)
+        => _chapterGroup.GetToChapter(chapterStep);
     }
 }

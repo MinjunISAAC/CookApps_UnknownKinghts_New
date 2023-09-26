@@ -38,6 +38,7 @@ namespace Core.ForData.ForUserSave
 
             for (int i = 0; i < clearDatas.Count; i++)
             {
+                Debug.Log($"응?");
                 var newDic      = new Dictionary<int, ClearData>();
                 var clearData   = clearDatas[i];
                 var chapterStep = clearData.Chapter;
@@ -109,7 +110,7 @@ namespace Core.ForData.ForUserSave
             }
             else
             {
-                Debug.LogError($"<color=red>[UserSaveDataManager.GetToClearData] Chapter {chapter}에 대한 정보가 존재하지 않습니다. 초기화 되어있는지 확인해야합니다.</color>");
+                //Debug.LogError($"<color=red>[UserSaveDataManager.GetToClearData] Chapter {chapter}에 대한 정보가 존재하지 않습니다. 초기화 되어있는지 확인해야합니다.</color>");
                 return null;
             }
         }
