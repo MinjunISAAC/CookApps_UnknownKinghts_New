@@ -113,6 +113,8 @@ namespace InGame.ForState.ForUI
 
             if (immediately) _mapMoveController.MoveToMap(endPos);
             else             _mapMoveController.MoveToMap(endPos, 0.25f, null);
+
+            _stageMapView.VisiableToFocus(nextStageStep);
         }
 
         public void VisiableStageEnterView(bool isShow)

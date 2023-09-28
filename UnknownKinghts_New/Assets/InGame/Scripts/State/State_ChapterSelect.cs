@@ -59,7 +59,6 @@ namespace InGame.ForState
             _targetChapter  = _owner.GetToChapterData(chapterStep);
             _targetStage    = _owner.GetToStageData(chapterStep, stageStep);
 
-            Debug.Log($"Target Stage {_targetStage.StageStep}");
             // 1. State UI √ ±‚»≠
             _SetToChapterSelectView(_targetChapter, _targetStage);
 

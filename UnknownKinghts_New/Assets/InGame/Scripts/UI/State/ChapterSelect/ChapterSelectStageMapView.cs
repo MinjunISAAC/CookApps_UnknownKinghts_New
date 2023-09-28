@@ -42,5 +42,16 @@ namespace InGame.ForState.ForUI
             var prevPos = _stageButtonGroup[stageStep - 1].RectTrans.anchoredPosition - _RECT_Focus.anchoredPosition;
             return -1f * prevPos;
         }
+
+        public void VisiableToFocus(int stageStep)
+        {
+            for (int i = 0; i < _stageButtonGroup.Count; i++)
+            {
+                var stageButton = _stageButtonGroup[i];
+                stageButton.VisiableToFocusFx(false);
+            }
+
+            _stageButtonGroup[stageStep - 1].VisiableToFocusFx(true);
+        }
     }
 }

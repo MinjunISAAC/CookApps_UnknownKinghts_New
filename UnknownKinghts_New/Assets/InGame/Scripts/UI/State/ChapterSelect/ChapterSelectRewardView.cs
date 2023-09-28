@@ -35,17 +35,12 @@ namespace InGame.ForState.ForUI
 
                 _rewardItemViewGroup.Add(item);
             }
-
-            Debug.Log($"Item View Group 1 {_rewardItemViewGroup.Count}");
-
         }
 
         public void ResetToRewardItems()
         {
-            Debug.Log($"Item View Group 2 {_rewardItemViewGroup.Count}");
             for (int i = _rewardItemViewGroup.Count - 1; i >= 0; i--)
             {
-                Debug.Log($"Item View Group 3 {_rewardItemViewGroup.Count}");
                 var itemView = _rewardItemViewGroup[i];
                 Destroy(itemView.gameObject);
             }

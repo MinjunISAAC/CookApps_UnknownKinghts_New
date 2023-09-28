@@ -17,6 +17,7 @@ namespace InGame.ForState.ForUI
         [SerializeField] private TextMeshProUGUI _TMP_StageStep = null;
         [SerializeField] private List<Image>     _starImgGroup  = null;
         [SerializeField] private Button          _BTN_Stage     = null;
+        [SerializeField] private Animation       _focusAnim     = null;
 
         // --------------------------------------------------
         // Variables
@@ -44,7 +45,6 @@ namespace InGame.ForState.ForUI
                 _TMP_StageStep.text = $"{chapterStep}-{stageStep}";
                 _BTN_Stage.onClick.AddListener(() => 
                 {
-                    Debug.Log($"Check {_chapterStep} - {_stageStep}");
                     _onClickStage(_chapterStep, _stageStep); 
                 });
             }
@@ -72,5 +72,8 @@ namespace InGame.ForState.ForUI
                 }
             }
         }
+
+        public void VisiableToFocusFx(bool isShow)
+        => _focusAnim.gameObject.SetActive(isShow);
     }
 }
