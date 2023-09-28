@@ -2,6 +2,7 @@ using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
 using InGame.ForLevel.ForChapter;
 using InGame.ForLevel.ForStage;
+using InGame.ForState.ForData;
 using InGame.ForState.ForUI;
 using System.Collections;
 using System.Collections.Generic;
@@ -117,6 +118,7 @@ namespace InGame.ForState
                     }
                 }
             );
+            _EnterToBuildDeck();
 
             // Stage Map Init
             var clearDataSet = UserSaveDataManager.GetToClearData(chapterData.Step);
@@ -149,6 +151,18 @@ namespace InGame.ForState
             var maxBread  = UserLevelDataHelper.GetToMaxBread(userLevel);
 
             _owner.SetToOptionView(State, userCoin, userGem, userBread, maxBread);
+        }
+        
+        private void _EnterToBuildDeck()
+        {
+            var nextData = new SelectStageInfo();
+            nextData.TargetChapterData = _targetChapter;
+            nextData.TargetStageData   = _targetStage;
+
+            _chapterSelectView.SetToOnClickBuildDeck
+            (
+                () => { Game_StateMachine.Instance.ChangeState(EGameState.BuildDeck, nextData);  }
+            );
         }
     }
 }

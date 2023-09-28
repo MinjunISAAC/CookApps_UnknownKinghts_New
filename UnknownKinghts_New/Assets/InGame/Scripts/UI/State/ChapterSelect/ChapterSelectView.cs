@@ -117,6 +117,12 @@ namespace InGame.ForState.ForUI
             _stageMapView.VisiableToFocus(nextStageStep);
         }
 
+        public void SetToOnClickBuildDeck(Action onClickBuildDeck)
+        => _stageEnterView.SetToOnClickBuildDeck(onClickBuildDeck);
+
+        public void ResetToSelectStageEnterView()
+        => _stageEnterView.ResetToClearStar();
+
         public void VisiableStageEnterView(bool isShow)
         => _stageEnterView.gameObject.SetActive(isShow);
     }

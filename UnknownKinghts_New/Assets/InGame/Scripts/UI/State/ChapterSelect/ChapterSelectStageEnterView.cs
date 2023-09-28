@@ -27,14 +27,15 @@ namespace InGame.ForState.ForUI
 
         [Header("Bottom Group")]
         [SerializeField] private ChapterSelectRewardView _rewardView     = null;
-        [SerializeField] private Button                  _BTN_BattleDeck = null;
+        [SerializeField] private Button                  _BTN_BuildDeck = null;
 
         // --------------------------------------------------
         // Variables
         // --------------------------------------------------
-        private Action _onClickCloseView = null;
-        private Action _onClickPrevStage = null;
-        private Action _onClickNextStage = null;
+        private Action _onClickCloseView  = null;
+        private Action _onClickPrevStage  = null;
+        private Action _onClickNextStage  = null;
+        private Action _onClickBuildDeck = null;
 
         // --------------------------------------------------
         // Functions - Nomal
@@ -105,6 +106,25 @@ namespace InGame.ForState.ForUI
                 _TMP_Difficult.text = $"¾î·Á¿ò";
 
             _TMP_StageInfo.text = $"{chapterStep}-{stageStep}";
+        }
+
+        public void SetToOnClickBuildDeck(Action onClickBuildDeck)
+        {
+            if (_onClickBuildDeck == null)
+            {
+                _onClickBuildDeck = onClickBuildDeck;
+
+                _BTN_BuildDeck.onClick.AddListener
+                (
+                    () => { _onClickBuildDeck(); }
+                );
+            }
+        }
+
+        public void ResetToSelectStageEnterView()
+        {
+            _onClickBuildDeck = null;
+            _BTN_BuildDeck.onClick.RemoveAllListeners();
         }
     }
 }

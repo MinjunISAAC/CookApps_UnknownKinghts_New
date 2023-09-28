@@ -59,8 +59,8 @@ public class Game_StateMachine : SimpleStateMachine<EGameState>
             {
                 { EGameState.Village      , new State_Village()       },
                 { EGameState.ChapterSelect, new State_ChapterSelect() },
+                { EGameState.BuildDeck    , new State_BuilidDeck()    },
                 /*
-                    { EStateType.BuildDeck,   new State_BuildDeck()   },
                     { EStateType.Battle,      new State_Battle()      },
                     { EStateType.Result,      new State_Result()      },
                 */

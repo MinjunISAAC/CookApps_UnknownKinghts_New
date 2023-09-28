@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727643487901682731, guid: 22c83b5f150ec6940ac74e16da0f8231, type: 3}
+      propertyPath: _BTN_BuildDeck
+      value: 
+      objectReference: {fileID: 7360444216424585663}
     - target: {fileID: 6848259715843741118, guid: 22c83b5f150ec6940ac74e16da0f8231, type: 3}
       propertyPath: m_Name
       value: '[StageEnterView]'
@@ -168,6 +172,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00d8d7245a17dd145a2d79a034d3b9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7360444216424585663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9192852811961375727, guid: 22c83b5f150ec6940ac74e16da0f8231, type: 3}
+  m_PrefabInstance: {fileID: 1852703383446110800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3954800086854165422
