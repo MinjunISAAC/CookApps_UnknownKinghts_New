@@ -87,6 +87,7 @@ namespace InGame.ForState
 
             // Stage Enter Init
             var clearData = UserSaveDataManager.GetToClearData(chapterData.Step, stageData.StageStep);
+            _chapterSelectView.VisiableStageEnterView(true);
             _chapterSelectView.SetToStageEnterView(clearData, chapterData, stageData);
             _chapterSelectView.SetToStageMoveBtn
             (
@@ -94,7 +95,9 @@ namespace InGame.ForState
                 {
                     if (_targetStage.StageStep > 1)
                     {
-                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep, _targetStage.StageStep - 1);
+                        _chapterSelectView.VisiableStageEnterView(true);
+
+                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep - 1);
                         _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.StageStep - 1);
 
                         var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
@@ -105,7 +108,9 @@ namespace InGame.ForState
                 {
                     if (_targetStage.StageStep < _targetChapter.StageQuantity)
                     {
-                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep, _targetStage.StageStep + 1);
+                        _chapterSelectView.VisiableStageEnterView(true);
+
+                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep + 1);
                         _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.StageStep + 1);
 
                         var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
@@ -124,14 +129,16 @@ namespace InGame.ForState
                     if (_targetStage.StageStep == stageStep)
                         return;
 
-                    _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep, stageStep);
+                    _chapterSelectView.VisiableStageEnterView(true);
+
+                    _chapterSelectView.SetToFocusToStage(false, stageStep);
                     _targetStage = _owner.GetToStageData(_targetChapter.Step, stageStep);
 
                     var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
                     _chapterSelectView.SetToStageEnterView(clearDatas, _targetChapter, _targetStage);
                 }
             );
-            _chapterSelectView.SetToFocusToStage(true, _targetStage.StageStep, _targetStage.StageStep);
+            _chapterSelectView.SetToFocusToStage(true, _targetStage.StageStep);
         }
 
         private void _SetToOptionView()

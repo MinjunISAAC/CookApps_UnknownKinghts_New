@@ -97,7 +97,7 @@ namespace InGame.ForState.ForUI
             
             _stageEnterView.SetToCloseView
             (
-                () => { _stageEnterView.gameObject.SetActive(false); }
+                () => { VisiableStageEnterView(false); }
             );
         }
 
@@ -107,12 +107,15 @@ namespace InGame.ForState.ForUI
         public void SetToStageMapView(Chapter chapterData, Dictionary<int, UserSaveData.ClearData> clearDataSet, Action<int, int> onClickStage)
         => _stageMapView.SetToStageMapView(chapterData, clearDataSet, onClickStage);
 
-        public void SetToFocusToStage(bool immediately, int currntStageStep, int nextStageStep)
+        public void SetToFocusToStage(bool immediately, int nextStageStep)
         {
             var endPos   = _stageMapView.GetToTargetChapterItemPos(nextStageStep);
 
             if (immediately) _mapMoveController.MoveToMap(endPos);
             else             _mapMoveController.MoveToMap(endPos, 0.25f, null);
         }
+
+        public void VisiableStageEnterView(bool isShow)
+        => _stageEnterView.gameObject.SetActive(isShow);
     }
 }
