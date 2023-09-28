@@ -12,4 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a723b42325b25aa40b1697d2b4cce327, type: 3}
   m_Name: Chapter1_Stage3
   m_EditorClassIdentifier: 
+  _difficultType: 1
   _stageStep: 3
+  _stageRewardDatas:
+  - Type: 1
+    Value: 50
+    StarSprite: {fileID: 21300000, guid: 2cd945c95cd3aba4fb3f4118e29a2456, type: 3}
+    FrameSprite: {fileID: 21300000, guid: 06cde7b3790d66c4d92603cb59565e5d, type: 3}
+    IconSprite: {fileID: 21300000, guid: aee0d30dfb6007c44bd890794e249362, type: 3}
+  - Type: 1
+    Value: 30
+    StarSprite: {fileID: 21300000, guid: d66ab75515c03c74aacd507543b65a18, type: 3}
+    FrameSprite: {fileID: 21300000, guid: 06cde7b3790d66c4d92603cb59565e5d, type: 3}
+    IconSprite: {fileID: 21300000, guid: aee0d30dfb6007c44bd890794e249362, type: 3}
+  - Type: 1
+    Value: 20
+    StarSprite: {fileID: 21300000, guid: 4aebd13914ca7e0499e298a365f5e71b, type: 3}
+    FrameSprite: {fileID: 21300000, guid: 06cde7b3790d66c4d92603cb59565e5d, type: 3}
+    IconSprite: {fileID: 21300000, guid: aee0d30dfb6007c44bd890794e249362, type: 3}
+  - Type: 2
+    Value: 2900
+    StarSprite: {fileID: 0}
+    FrameSprite: {fileID: 21300000, guid: 88f4ca5af32dff544bb4849e760a3923, type: 3}
+    IconSprite: {fileID: 21300000, guid: 1beee7c0b3ef9344da3eadce98df22a4, type: 3}
+  - Type: 4
+    Value: 75
+    StarSprite: {fileID: 0}
+    FrameSprite: {fileID: 21300000, guid: 88f4ca5af32dff544bb4849e760a3923, type: 3}
+    IconSprite: {fileID: 21300000, guid: b86b03eb376833a4487d387fb843741c, type: 3}
+  - Type: 5
+    Value: 20
+    StarSprite: {fileID: 0}
+    FrameSprite: {fileID: 21300000, guid: 88f4ca5af32dff544bb4849e760a3923, type: 3}
+    IconSprite: {fileID: 21300000, guid: a8006b089a15dbf478637f65a49bfdfd, type: 3}

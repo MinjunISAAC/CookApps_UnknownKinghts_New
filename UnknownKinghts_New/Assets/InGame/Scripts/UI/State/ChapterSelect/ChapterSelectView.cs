@@ -9,6 +9,9 @@ using UnityEngine.UI;
 using InGame.ForUI;
 using InGame.ForLevel.ForChapter;
 using Core.ForData.ForUserSave;
+using System.Collections.Generic;
+using InGame.ForLevel.ForReward;
+using InGame.ForLevel.ForStage;
 
 namespace InGame.ForState.ForUI
 {
@@ -21,7 +24,10 @@ namespace InGame.ForState.ForUI
         [SerializeField] private Button _BTN_Return = null;
         
         [Header("2. Stage Info Group")]
-        [SerializeField] private ChapterSelectStageInfoView _stageInfoView;
+        [SerializeField] private ChapterSelectStageInfoView _stageInfoView = null;
+
+        [Header("3. Stage Enter Group")]
+        [SerializeField] private ChapterSelectStageEnterView _stageEnterView = null;
 
         // --------------------------------------------------
         // Variables
@@ -29,10 +35,17 @@ namespace InGame.ForState.ForUI
         private Action _onClickReturn = null;
 
         // --------------------------------------------------
-        // Functions
+        // Functions - Event
         // --------------------------------------------------
         public override void OnInit  () { }
         public override void OnFinish() { }
+
+        private void Start()
+        {
+            _BTN_Return    .gameObject.SetActive(true);
+            _stageInfoView .gameObject.SetActive(true);
+            _stageEnterView.gameObject.SetActive(true);
+        }
 
         // --------------------------------------------------
         // Functions - Nomal
@@ -64,6 +77,20 @@ namespace InGame.ForState.ForUI
             }
 
             _stageInfoView.SetToChapterInfos(chapterStep, chapterName, totalClearStageStar, stageCount, onClickStage);
+        }
+
+        public void SetToStageEnterView(UserSaveData.ClearData clearData, Chapter chapterData, Stage stageData)
+        {
+            List<StageRewardData> rewardDatas = stageData.StageRewardDatas;
+
+            _stageEnterView.SetToRewardView(rewardDatas);
+            _stageEnterView.SetToClearStar (clearData);
+            _stageEnterView.SetToStageInfo (stageData.DifficultType, chapterData.Step, stageData.StageStep);
+            
+            _stageEnterView.SetToCloseView
+            (
+                () => { _stageEnterView.gameObject.SetActive(false); }
+            );
         }
     }
 }

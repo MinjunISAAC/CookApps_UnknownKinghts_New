@@ -2,6 +2,7 @@ using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
 using InGame.ForChapterGroup;
 using InGame.ForLevel.ForChapter;
+using InGame.ForLevel.ForStage;
 using InGame.ForState;
 using InGame.ForUI;
 using InGame.ForUI.ForOption;
@@ -73,5 +74,8 @@ namespace InGame
 
         public Chapter GetToChapterData(int chapterStep)
         => _chapterGroup.GetToChapter(chapterStep);
+
+        public Stage GetToStageData(int chapterStep, int stageStep)
+        => _chapterGroup.GetToStage(chapterStep, stageStep);
     }
 }

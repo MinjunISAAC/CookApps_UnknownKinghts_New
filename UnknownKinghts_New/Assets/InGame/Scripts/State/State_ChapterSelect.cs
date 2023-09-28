@@ -1,6 +1,7 @@
 using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
 using InGame.ForLevel.ForChapter;
+using InGame.ForLevel.ForStage;
 using InGame.ForState.ForUI;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace InGame.ForState
 
         // ----- UI
         private ChapterSelectView _chapterSelectView = null;
+
+        // ----- Target Level
+        private Chapter           _targetChapter     = null;
+        private Stage             _targetStage       = null;
 
         // --------------------------------------------------
         // Properties
@@ -49,11 +54,13 @@ namespace InGame.ForState
             }
             #endregion
 
-            var chapterStep       = UserSaveDataManager.GetToLastChapter();
-            var targetChapterData = _owner.GetToChapterData(chapterStep);
-
+            var chapterStep = UserSaveDataManager.GetToLastChapter();
+            var stageStep   = UserSaveDataManager.GetToLastStage  ();
+            _targetChapter  = _owner.GetToChapterData(chapterStep);
+            _targetStage    = _owner.GetToStageData(chapterStep, stageStep);
+            
             // 1. State UI 초기화
-            _SetToChapterSelectView(targetChapterData);
+            _SetToChapterSelectView(_targetChapter, _targetStage);
 
             // 2. Option View 초기화
             _SetToOptionView();
@@ -66,15 +73,20 @@ namespace InGame.ForState
         }
 
         // ----- Only State 
-        private void _SetToChapterSelectView(Chapter chapterData)
+        private void _SetToChapterSelectView(Chapter chapterData, Stage stageData)
         {
             _chapterSelectView.gameObject.SetActive(true);
+
+            // Stage Info Init
+            _chapterSelectView.SetToStageInfoView(chapterData, null);
             _chapterSelectView.SetToOnClickReturn
             (
                 () => { Game_StateMachine.Instance.ChangeState(EGameState.Village); }
             );
 
-            _chapterSelectView.SetToStageInfoView(chapterData, null);
+            // Stage Enter Init
+            var clearData = UserSaveDataManager.GetToClearData(chapterData.Step, stageData.StageStep);
+            _chapterSelectView.SetToStageEnterView(clearData, chapterData, stageData);
         }
 
         private void _SetToOptionView()

@@ -1,4 +1,9 @@
+// ----- Unity
 using UnityEngine;
+
+// ----- User Defined
+using InGame.ForLevel.ForReward;
+using System.Collections.Generic;
 
 namespace InGame.ForLevel.ForStage
 {
@@ -8,13 +13,15 @@ namespace InGame.ForLevel.ForStage
         // --------------------------------------------------
         // Components
         // --------------------------------------------------
-        [Header("1. Step Number")]
-        [SerializeField] private int _stageStep = 0;
+        [Header("1. Difficulty Type")]
+        [SerializeField] private EDifficultType        _difficultType    = EDifficultType.Unknown;
 
+        [Header("2. Step Number")]
+        [SerializeField] private int                   _stageStep        = 0;
+
+        [Header("3. Reward Group")]
+        [SerializeField] private List<StageRewardData> _stageRewardDatas = null;
         /*
-        [Header("2. Reward Group")]
-        [SerializeField] private List<RewardItemData> _rewardList = null;
-
         [Header("3. Unit Group")]
         [SerializeField] private List<UnitData> _unitList = null;
 
@@ -25,9 +32,10 @@ namespace InGame.ForLevel.ForStage
         // --------------------------------------------------
         // Properties
         // --------------------------------------------------
-        public int StageStep => _stageStep;
+        public EDifficultType        DifficultType    => _difficultType;
+        public int                   StageStep        => _stageStep;
+        public List<StageRewardData> StageRewardDatas => _stageRewardDatas;
         /*
-        public List<RewardItemData> RewardList => _rewardList;
         public List<UnitData> UnitList => _unitList;
         public float PlayTime => _playTime;
         */
@@ -35,37 +43,15 @@ namespace InGame.ForLevel.ForStage
         // Functions - Nomal
         // --------------------------------------------------
         /*
-        public int GetToCoin()
+        public int GetToCoinReward() => _stageReward.CoinReward; 
+        public int GetToUserExp   () => _stageReward.UserExp; 
+        public int GetToKnightsExp() => _stageReward.KnightsExp;
+        public int GetToExpScroll () => _stageReward.ExpScroll;
+        public int GetToGemReward (int starCount)
         {
-            for (int i = 0; i < _rewardList.Count; i++)
-            {
-                var item = _rewardList[i];
-                if (item.Type == ERewardType.Coin)
-                    return item.Value;
-            }
-            return 0;
-        }
-
-        public int GetToGem()
-        {
-            for (int i = 0; i < _rewardList.Count; i++)
-            {
-                var item = _rewardList[i];
-                if (item.Type == ERewardType.Gem)
-                    return item.Value;
-            }
-            return 0;
-        }
-
-        public int GetToExp()
-        {
-            for (int i = 0; i < _rewardList.Count; i++)
-            {
-                var item = _rewardList[i];
-                if (item.Type == ERewardType.Exp)
-                    return item.Value;
-            }
-            return 0;
+            var gemRewards = _stageReward.GemRewards;
+            var gemReward  = gemRewards[starCount - 1];
+            return gemReward;
         }
         */
     }
