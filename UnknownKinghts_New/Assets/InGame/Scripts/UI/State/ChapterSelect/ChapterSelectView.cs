@@ -1,17 +1,19 @@
 // ----- C#
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 // ----- Unity
 using UnityEngine;
 using UnityEngine.UI;
 
 // ----- User Defined
+using Core.ForData.ForUserSave;
 using InGame.ForUI;
 using InGame.ForLevel.ForChapter;
-using Core.ForData.ForUserSave;
-using System.Collections.Generic;
 using InGame.ForLevel.ForReward;
 using InGame.ForLevel.ForStage;
+using InGame.ForMap;
 
 namespace InGame.ForState.ForUI
 {
@@ -24,10 +26,16 @@ namespace InGame.ForState.ForUI
         [SerializeField] private Button _BTN_Return = null;
         
         [Header("2. Stage Info Group")]
-        [SerializeField] private ChapterSelectStageInfoView _stageInfoView = null;
+        [SerializeField] private ChapterSelectStageInfoView  _stageInfoView     = null;
 
         [Header("3. Stage Enter Group")]
-        [SerializeField] private ChapterSelectStageEnterView _stageEnterView = null;
+        [SerializeField] private ChapterSelectStageEnterView _stageEnterView    = null;
+
+        [Header("4. Stage Map Group")]
+        [SerializeField] private ChapterSelectStageMapView   _stageMapView      = null;
+
+        [Header("5. Map Move Controller")]
+        [SerializeField] private MapMoveController           _mapMoveController = null;
 
         // --------------------------------------------------
         // Variables
@@ -91,6 +99,20 @@ namespace InGame.ForState.ForUI
             (
                 () => { _stageEnterView.gameObject.SetActive(false); }
             );
+        }
+
+        public void SetToStageMoveBtn(Action onClickPrevStage, Action onClickNextStage)
+        => _stageEnterView.SetToCenter(onClickPrevStage, onClickNextStage);
+
+        public void SetToStageMapView(Chapter chapterData, Dictionary<int, UserSaveData.ClearData> clearDataSet, Action<int, int> onClickStage)
+        => _stageMapView.SetToStageMapView(chapterData, clearDataSet, onClickStage);
+
+        public void SetToFocusToStage(bool immediately, int currntStageStep, int nextStageStep)
+        {
+            var endPos   = _stageMapView.GetToTargetChapterItemPos(nextStageStep);
+
+            if (immediately) _mapMoveController.MoveToMap(endPos);
+            else             _mapMoveController.MoveToMap(endPos, 0.25f, null);
         }
     }
 }

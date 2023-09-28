@@ -33,6 +33,8 @@ namespace InGame.ForState.ForUI
         // Variables
         // --------------------------------------------------
         private Action _onClickCloseView = null;
+        private Action _onClickPrevStage = null;
+        private Action _onClickNextStage = null;
 
         // --------------------------------------------------
         // Functions - Nomal
@@ -43,6 +45,18 @@ namespace InGame.ForState.ForUI
             {
                 _onClickCloseView = onClickCloseView;
                 _BTN_Close.onClick.AddListener(() => { _onClickCloseView(); });
+            }
+        }
+
+        public void SetToCenter(Action onClickPrevStage, Action onClickNextStage )
+        {
+            if (_onClickPrevStage == null && _onClickNextStage == null)
+            {
+                _onClickPrevStage = onClickPrevStage;
+                _onClickNextStage = onClickNextStage;
+
+                _BTN_PrevStage.onClick.AddListener(() => { _onClickPrevStage(); });
+                _BTN_NextStage.onClick.AddListener(() => { _onClickNextStage(); });
             }
         }
 
