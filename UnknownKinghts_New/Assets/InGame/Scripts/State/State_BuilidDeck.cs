@@ -1,6 +1,7 @@
 using Core.ForData.ForUserLevel;
 using Core.ForData.ForUserSave;
 using InGame.ForLevel.ForChapter;
+using InGame.ForLevel.ForStage;
 using InGame.ForState.ForData;
 using InGame.ForState.ForUI;
 using System.Collections;
@@ -20,6 +21,10 @@ namespace InGame.ForState
 
         // ----- UI
         private BuildDeckView _buildDeckView = null;
+
+        // ----- Target Level
+        private Chapter _targetChapter = null;
+        private Stage   _targetStage   = null;
 
         // --------------------------------------------------
         // Properties
@@ -52,6 +57,8 @@ namespace InGame.ForState
 
             // 1. 전달 Data 초기화
             var data = (SelectStageInfo)startParam;
+            _targetChapter = data.TargetChapterData;
+            _targetStage   = data.TargetStageData;
 
             // 2. State UI 초기화
             _SetToBuildDeckView(data);
@@ -68,6 +75,8 @@ namespace InGame.ForState
 
         protected override void _Finish(EGameState nextStateKey)
         {
+            _targetChapter = null;
+            _targetStage   = null;
             _buildDeckView.gameObject.SetActive(false);
             Debug.Log($"<color=yellow>[State_{State}._Start] {State} State에 이탈하였습니다.</color>");
         }
@@ -82,18 +91,17 @@ namespace InGame.ForState
             var stageData   = infoData.TargetStageData;
             var chapterName = chapterData.Name;
             var chapterStep = chapterData.Step;
-            var stageStep   = stageData  .StageStep;
+            var stageStep   = stageData  .Step;
 
             _buildDeckView.SetToTopView
             (
                 chapterName, chapterStep, stageStep,
                 () => 
                 {
-
                     var nextData = new SelectStageInfo();
 
-                    nextData.TargetChapterData = chapterData;
-                    nextData.TargetStageData   = stageData;
+                    nextData.TargetChapterData = _targetChapter;
+                    nextData.TargetStageData   = _targetStage;
 
                     Game_StateMachine.Instance.ChangeState(EGameState.ChapterSelect, nextData); 
                 }

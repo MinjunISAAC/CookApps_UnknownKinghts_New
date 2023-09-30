@@ -55,13 +55,13 @@ namespace InGame.ForState
             }
             #endregion
 
-
             // Start Param 존재 확인
             if (startParam != null)
             {
                 var data       = (SelectStageInfo)startParam;
                 _targetChapter = data.TargetChapterData;
                 _targetStage   = data.TargetStageData;
+                Debug.Log($"컴백 체크 2 {_targetChapter.Step}-{_targetStage.Step}");
             }
             else
             {
@@ -69,6 +69,7 @@ namespace InGame.ForState
                 var stageStep   = UserSaveDataManager.GetToLastStage  ();
                 _targetChapter  = _owner.GetToChapterData(chapterStep);
                 _targetStage    = _owner.GetToStageData(chapterStep, stageStep);
+                Debug.Log($"컴백 체크 3 {_targetChapter.Step}-{_targetStage.Step}");
             }
 
             // 1. State UI 초기화
@@ -97,35 +98,39 @@ namespace InGame.ForState
             );
 
             // Stage Enter Init
-            var clearData = UserSaveDataManager.GetToClearData(chapterData.Step, stageData.StageStep);
+            var clearData = UserSaveDataManager.GetToClearData(chapterData.Step, stageData.Step);
             _chapterSelectView.VisiableStageEnterView(true);
             _chapterSelectView.SetToStageEnterView(clearData, chapterData, stageData);
             _chapterSelectView.SetToStageMoveBtn
             (
                 () => 
                 {
-                    if (_targetStage.StageStep > 1)
+                    if (_targetStage.Step > 1)
                     {
                         _chapterSelectView.VisiableStageEnterView(true);
 
-                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep - 1);
-                        _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.StageStep - 1);
+                        _chapterSelectView.SetToFocusToStage(false, _targetStage.Step - 1);
+                        _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.Step - 1);
 
-                        var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
+                        var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.Step);
                         _chapterSelectView.SetToStageEnterView(clearDatas, _targetChapter, _targetStage);
+                        
+                        Debug.Log($"왼쪽 체크 {_targetChapter.Step}-{_targetStage.Step}");
                     }
                 },
                 () =>
                 {
-                    if (_targetStage.StageStep < _targetChapter.StageQuantity)
+                    if (_targetStage.Step < _targetChapter.StageQuantity)
                     {
                         _chapterSelectView.VisiableStageEnterView(true);
 
-                        _chapterSelectView.SetToFocusToStage(false, _targetStage.StageStep + 1);
-                        _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.StageStep + 1);
+                        _chapterSelectView.SetToFocusToStage(false, _targetStage.Step + 1);
+                        _targetStage = _owner.GetToStageData(_targetChapter.Step, _targetStage.Step + 1);
 
-                        var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
+                        var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.Step);
                         _chapterSelectView.SetToStageEnterView(clearDatas, _targetChapter, _targetStage);
+
+                        Debug.Log($"오른쪽 체크 {_targetChapter.Step}-{_targetStage.Step}");
                     }
                 }
             );
@@ -138,7 +143,7 @@ namespace InGame.ForState
                 chapterData, clearDataSet, 
                 (chapterStep, stageStep) =>
                 {
-                    if (_targetStage.StageStep == stageStep)
+                    if (_targetStage.Step == stageStep)
                         return;
 
                     _chapterSelectView.VisiableStageEnterView(true);
@@ -146,11 +151,11 @@ namespace InGame.ForState
                     _chapterSelectView.SetToFocusToStage(false, stageStep);
                     _targetStage = _owner.GetToStageData(_targetChapter.Step, stageStep);
 
-                    var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.StageStep);
+                    var clearDatas = UserSaveDataManager.GetToClearData(_targetChapter.Step, _targetStage.Step);
                     _chapterSelectView.SetToStageEnterView(clearDatas, _targetChapter, _targetStage);
                 }
             );
-            _chapterSelectView.SetToFocusToStage(true, _targetStage.StageStep);
+            _chapterSelectView.SetToFocusToStage(true, _targetStage.Step);
         }
 
         private void _SetToOptionView()
@@ -175,6 +180,7 @@ namespace InGame.ForState
                     nextData.TargetChapterData = _targetChapter;
                     nextData.TargetStageData   = _targetStage;
 
+                    Debug.Log($"Stage Info {_targetChapter.Step}-{_targetStage.Step}");
                     Game_StateMachine.Instance.ChangeState(EGameState.BuildDeck, nextData);  
                 }
             );

@@ -33,7 +33,7 @@ namespace InGame.ForLevel.ForStage
         // Properties
         // --------------------------------------------------
         public EDifficultType        DifficultType    => _difficultType;
-        public int                   StageStep        => _stageStep;
+        public int                   Step        => _stageStep;
         public List<StageRewardData> StageRewardDatas => _stageRewardDatas;
         /*
         public List<UnitData> UnitList => _unitList;

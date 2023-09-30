@@ -93,7 +93,7 @@ namespace InGame.ForState.ForUI
 
             _stageEnterView.SetToRewardView(rewardDatas);
             _stageEnterView.SetToClearStar (clearData);
-            _stageEnterView.SetToStageInfo (stageData.DifficultType, chapterData.Step, stageData.StageStep);
+            _stageEnterView.SetToStageInfo (stageData.DifficultType, chapterData.Step, stageData.Step);
             
             _stageEnterView.SetToCloseView
             (
