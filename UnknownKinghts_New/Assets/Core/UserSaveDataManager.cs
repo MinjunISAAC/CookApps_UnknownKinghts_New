@@ -1,9 +1,13 @@
+using InGame.ForUnit;
+using InGame.ForUnit.ForData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using Util.ForJson;
 using static Core.ForData.ForUserSave.UserSaveData;
 
 namespace Core.ForData.ForUserSave
@@ -19,6 +23,7 @@ namespace Core.ForData.ForUserSave
         // ----- Private
         private static UserSaveData                                _userSaveData = new UserSaveData();
         private static Dictionary<int, Dictionary<int, ClearData>> _clearDataSet = new Dictionary<int, Dictionary<int, ClearData>>();
+        private static Dictionary<EUnitType, UnitData>             _ownedUnitSet = new Dictionary<EUnitType, UnitData>();
 
         // --------------------------------------------------
         // Functions - Nomal
@@ -27,7 +32,23 @@ namespace Core.ForData.ForUserSave
         {
             Load();
 
-            var clearDatas = _userSaveData.ClearDatas;
+            // 테스트를 위한 Unit 생성
+            var defaultUnitDatas = UnitDefaultDataHelper.GetToDefaultUnitDataSet();
+            foreach (KeyValuePair<EUnitType, UnitDefaultData> key in defaultUnitDatas)
+            {
+                if (!_ownedUnitSet.TryGetValue(key.Key, out var unitData))
+                {
+                    if (defaultUnitDatas.TryGetValue(key.Key, out var defaultData)) 
+                    {
+                        UnitData newUnitData = new UnitData();
+                        newUnitData.SetUp_Test(defaultData);
+                        _ownedUnitSet.Add(key.Key, newUnitData);
+                        SetToUnit(newUnitData);
+                    }
+                }
+            }
+
+            var clearDatas     = _userSaveData.ClearDatas;
 
             if (clearDatas.Count == 0)
             {
@@ -46,6 +67,7 @@ namespace Core.ForData.ForUserSave
                 newDic.Add(stageStep, clearData);
                 _clearDataSet.Add(chapterStep, newDic);
             }
+
         }
 
         #region<기본 정보>
@@ -188,6 +210,13 @@ namespace Core.ForData.ForUserSave
         }
         #endregion
 
+        #region <보유 유닛>
+        public static void SetToUnit(UnitData newUnitData)
+        {
+            _userSaveData.OwnedUnits.Add(newUnitData);
+            Save();
+        }
+        #endregion
 
         // --------------------------------------------------
         // Functions - Load & Save

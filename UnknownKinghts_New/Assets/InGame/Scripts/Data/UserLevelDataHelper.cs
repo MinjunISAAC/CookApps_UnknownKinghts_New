@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ----- User Defined
-using Core.ForData.ForUserLevel;
 using Util.ForJson;
 
 namespace Core.ForData.ForUserLevel 

@@ -55,10 +55,21 @@ namespace InGame.ForState
             }
             #endregion
 
-            var chapterStep = UserSaveDataManager.GetToLastChapter();
-            var stageStep   = UserSaveDataManager.GetToLastStage  ();
-            _targetChapter  = _owner.GetToChapterData(chapterStep);
-            _targetStage    = _owner.GetToStageData(chapterStep, stageStep);
+
+            // Start Param 존재 확인
+            if (startParam != null)
+            {
+                var data       = (SelectStageInfo)startParam;
+                _targetChapter = data.TargetChapterData;
+                _targetStage   = data.TargetStageData;
+            }
+            else
+            {
+                var chapterStep = UserSaveDataManager.GetToLastChapter();
+                var stageStep   = UserSaveDataManager.GetToLastStage  ();
+                _targetChapter  = _owner.GetToChapterData(chapterStep);
+                _targetStage    = _owner.GetToStageData(chapterStep, stageStep);
+            }
 
             // 1. State UI 초기화
             _SetToChapterSelectView(_targetChapter, _targetStage);
@@ -155,13 +166,17 @@ namespace InGame.ForState
         
         private void _EnterToBuildDeck()
         {
-            var nextData = new SelectStageInfo();
-            nextData.TargetChapterData = _targetChapter;
-            nextData.TargetStageData   = _targetStage;
-
             _chapterSelectView.SetToOnClickBuildDeck
             (
-                () => { Game_StateMachine.Instance.ChangeState(EGameState.BuildDeck, nextData);  }
+                () => 
+                {
+                    var nextData = new SelectStageInfo();
+                    
+                    nextData.TargetChapterData = _targetChapter;
+                    nextData.TargetStageData   = _targetStage;
+
+                    Game_StateMachine.Instance.ChangeState(EGameState.BuildDeck, nextData);  
+                }
             );
         }
     }

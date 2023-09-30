@@ -54,7 +54,7 @@ namespace InGame.ForState
             var data = (SelectStageInfo)startParam;
 
             // 2. State UI 초기화
-            _SetToBuildDeckView();
+            _SetToBuildDeckView(data);
 
             // 2. Option View 초기화
             var userLevel = UserSaveDataManager.GetToUserLevel();
@@ -74,9 +74,31 @@ namespace InGame.ForState
 
 
         // ----- Only State 
-        private void _SetToBuildDeckView()
+        private void _SetToBuildDeckView(SelectStageInfo infoData)
         {
             _buildDeckView.gameObject.SetActive(true);
+
+            var chapterData = infoData.TargetChapterData;
+            var stageData   = infoData.TargetStageData;
+            var chapterName = chapterData.Name;
+            var chapterStep = chapterData.Step;
+            var stageStep   = stageData  .StageStep;
+
+            _buildDeckView.SetToTopView
+            (
+                chapterName, chapterStep, stageStep,
+                () => 
+                {
+
+                    var nextData = new SelectStageInfo();
+
+                    nextData.TargetChapterData = chapterData;
+                    nextData.TargetStageData   = stageData;
+
+                    Game_StateMachine.Instance.ChangeState(EGameState.ChapterSelect, nextData); 
+                }
+            );
+
         }
     }
 }

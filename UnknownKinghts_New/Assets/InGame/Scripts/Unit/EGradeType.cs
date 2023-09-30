@@ -2,10 +2,10 @@ namespace InGame.ForUnit.ForData
 {
     public enum EGradeType 
     {
-        Unknown = 0,
-        Nomal   = 1,
-        Rare    = 2,
-        Epic    = 3,
-        Legend  = 4,
+        Unknown   = 0,
+        Nomal     = 1,
+        Rare      = 2,
+        Epic      = 3,
+        Legendary = 4,
     }
 }

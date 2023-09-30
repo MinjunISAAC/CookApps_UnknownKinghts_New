@@ -4,6 +4,9 @@ using System.Collections.Generic;
 // ----- Unity
 using UnityEngine;
 
+// ----- User Defined
+using InGame.ForUnit;
+
 namespace Core.ForData.ForUserSave
 {
     [System.Serializable]
@@ -47,7 +50,7 @@ namespace Core.ForData.ForUserSave
         [SerializeField] private int _currencyGem   = 0;
 
         // [캐릭터 정보]
-        //[SerializeField] private List<UnitData> _ownedUnits = new List<UnitData>();
+        [SerializeField] private List<UnitData> _ownedUnits = new List<UnitData>();
 
         // --------------------------------------------------
         // Properties
@@ -115,6 +118,14 @@ namespace Core.ForData.ForUserSave
         {
             get => _currencyGem;
             set => _currencyGem = value;
+        }
+        #endregion
+
+        #region <보유 유닛>
+        public List<UnitData> OwnedUnits
+        {
+            get => _ownedUnits;
+            set => _ownedUnits = value;
         }
         #endregion
     }

@@ -6,6 +6,7 @@ using InGame.ForLevel.ForStage;
 using InGame.ForState;
 using InGame.ForUI;
 using InGame.ForUI.ForOption;
+using InGame.ForUnit.ForData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,11 +49,12 @@ namespace InGame
             // 1. Json File Load
             // 2. User Save Data Load
             // 3. Chapter Data Load
-            JsonParser         .LoadJson();
-            UserSaveDataManager.Load();
-            UserSaveDataManager.OnInit();
-            UserLevelDataHelper.OnInit();
-            _chapterGroup      .OnInit();
+            JsonParser           .LoadJson();
+            UnitDefaultDataHelper.OnInit();
+            UserSaveDataManager  .Load();
+            UserSaveDataManager  .OnInit();
+            UserLevelDataHelper  .OnInit();
+            _chapterGroup        .OnInit();
 
             Game_StateMachine.Instance.ChangeState(EGameState.Village);
             yield return null;

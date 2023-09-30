@@ -1,0 +1,335 @@
+{
+  "DataSet":
+  [
+    {
+      "Name": "무명용사",
+      "Star": 1,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "UnknownHero",
+        "JobType": "Warrior",
+        "GradeType": "Unknown",
+        "SpecType": "Light",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackDistance": 1,
+        "AttackPower": 200,
+        "AttackSpeed": 1,
+        "CriticalDamage": 200,
+        "CriticalRate": 5,
+        "Defense": 35,
+        "Hp": 5000,
+        "PenetratePower": 30
+      },
+      "NomalSkill": {
+        "Name": "슬래시 다운",
+        "CoolTime": 7
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "그웬",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "Gwen",
+        "JobType": "Sniper",
+        "GradeType": "Rare",
+        "SpecType": "Mecha",
+        "PositionType": "Center"
+      },
+      "AbilityGroup": {
+        "AttackPower": 227,
+        "AttackDistance": 4,
+        "AttackSpeed": 1,
+        "Hp": 4962,
+        "Defense": 42,
+        "PenetratePower": 70,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "파이어 인더 홀",
+        "CoolTime": 9
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "오헨",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "Owhen",
+        "JobType": "Assassin",
+        "GradeType": "Rare",
+        "SpecType": "Fire",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackPower": 227,
+        "AttackDistance": 1,
+        "AttackSpeed": 1,
+        "Hp": 6195,
+        "Defense": 28,
+        "PenetratePower": 42,
+        "CriticalDamage": 200,
+        "CriticalRate": 6
+      },
+      "NomalSkill": {
+        "Name": "뱀파이어 샷",
+        "CoolTime": 8
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "케루스",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "Cerus",
+        "JobType": "Support",
+        "GradeType": "Rare",
+        "SpecType": "Wind",
+        "PositionType": "Rear"
+      },
+      "AbilityGroup": {
+        "AttackPower": 151,
+        "AttackDistance": 4,
+        "AttackSpeed": 1,
+        "Hp": 5125,
+        "Defense": 28,
+        "PenetratePower": 28,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "네이쳐 큐어",
+        "CoolTime": 6
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "바이올렛",
+      "Star": 4,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "Violet",
+        "JobType": "Wizard",
+        "GradeType": "Legendary",
+        "SpecType": "Dark",
+        "PositionType": "Center"
+      },
+      "AbilityGroup": {
+        "AttackPower": 384,
+        "AttackDistance": 4,
+        "AttackSpeed": 1,
+        "Hp": 9620,
+        "Defense": 52,
+        "PenetratePower": 130,
+        "CriticalDamage": 200,
+        "CriticalRate": 7
+      },
+      "NomalSkill": {
+        "Name": "심연 소환",
+        "CoolTime": 10
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "뉴타입",
+      "Star": 3,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "NewType",
+        "JobType": "Warrior",
+        "GradeType": "Epic",
+        "SpecType": "Stone",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackPower": 300,
+        "AttackDistance": 1,
+        "AttackSpeed": 1,
+        "Hp": 9000,
+        "Defense": 60,
+        "PenetratePower": 30,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "스플래시 넉백",
+        "CoolTime": 10
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "슬라임",
+      "Star": 1,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "NomalSlime",
+        "JobType": "Warrior",
+        "GradeType": "Nomal",
+        "SpecType": "Fire",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackPower": 200,
+        "AttackDistance": 1,
+        "AttackSpeed": 1,
+        "Hp": 4000,
+        "Defense": 35,
+        "PenetratePower": 30,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "덮치기",
+        "CoolTime": 7
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "뼈슬라임",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "BoneSlime",
+        "JobType": "Warrior",
+        "GradeType": "Rare",
+        "SpecType": "Stone",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackPower": 250,
+        "AttackDistance": 1,
+        "AttackSpeed": 1,
+        "Hp": 4500,
+        "Defense": 40,
+        "PenetratePower": 40,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "뒤로치기",
+        "CoolTime": 7
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "척후병",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "NomalArchur",
+        "JobType": "Sniper",
+        "GradeType": "Rare",
+        "SpecType": "Mecha",
+        "PositionType": "Center"
+      },
+      "AbilityGroup": {
+        "AttackPower": 250,
+        "AttackDistance": 4,
+        "AttackSpeed": 1,
+        "Hp": 4500,
+        "Defense": 35,
+        "PenetratePower": 50,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "갈래 화살",
+        "CoolTime": 9
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "반역 전사",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "NomalWarrior",
+        "JobType": "Warrior",
+        "GradeType": "Rare",
+        "SpecType": "Stone",
+        "PositionType": "Front"
+      },
+      "AbilityGroup": {
+        "AttackPower": 300,
+        "AttackDistance": 1,
+        "AttackSpeed": 1,
+        "Hp": 6195,
+        "Defense": 45,
+        "PenetratePower": 35,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "밀어내기",
+        "CoolTime": 7
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    },
+    {
+      "Name": "반역 힐러",
+      "Star": 2,
+      "Level": 1,
+      "TypeGroup": {
+        "UnitType": "NomalHealer",
+        "JobType": "Support",
+        "GradeType": "Rare",
+        "SpecType": "Dark",
+        "PositionType": "Rear"
+      },
+      "AbilityGroup": {
+        "AttackPower": 150,
+        "AttackDistance": 4,
+        "AttackSpeed": 1,
+        "Hp": 4000,
+        "Defense": 35,
+        "PenetratePower": 30,
+        "CriticalDamage": 200,
+        "CriticalRate": 5
+      },
+      "NomalSkill": {
+        "Name": "나에게 힘을 줘",
+        "CoolTime": 7
+      },
+      "WeaponSkill": {
+        "Name": "",
+        "CoolTime": -1
+      }
+    }
+  ]
+}
